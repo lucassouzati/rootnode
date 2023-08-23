@@ -42,4 +42,16 @@ describe('Aluno Service', () => {
 
         assert.strictEqual(result, aluno.notaFinal);
     });
+
+    it("deve calcular média da turma", () => {
+        const aluno = alunoService.create({ nome: "teste", notaFinal: 100 });
+        const aluno2 = alunoService.create({ nome: "teste 2", notaFinal: 50 });
+        const mediaEsperada = (aluno.notaFinal + aluno2.notaFinal) / 2;
+
+        const mediaResultada = alunoService.showMediaDaTurma();
+
+        assert.strictEqual(mediaResultada, mediaEsperada);
+
+
+    });
 });

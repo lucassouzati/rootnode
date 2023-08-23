@@ -34,6 +34,15 @@ class AlunoService {
         const aluno = this.findByNome(nome)[0];
         return aluno.notaFinal;
     }
+
+    showMediaDaTurma(){
+        const todosAlunos = this.repository.findAll();
+        if(todosAlunos.length == 0)
+            return 0;
+
+        const notaSomada = todosAlunos.reduce((notaSomada, a) => notaSomada + a.notaFinal, 0 );
+        return notaSomada / todosAlunos.length;
+    }
 }
 
 module.exports = { AlunoService: AlunoService };
