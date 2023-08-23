@@ -34,5 +34,12 @@ describe('Aluno Service', () => {
 
         assert.strictEqual(result, true);
 
-    })
+    });
+
+    it("deve mostrar a nota pelo nome", () => {
+        const aluno = alunoService.create({ nome: "teste", notaFinal: 100 });
+        const result = alunoService.showNotaByNome(aluno.nome);
+
+        assert.strictEqual(result, aluno.notaFinal);
+    });
 });

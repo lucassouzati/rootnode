@@ -29,6 +29,11 @@ class AlunoService {
             return false;
         }
     }
+
+    showNotaByNome(nome){
+        const aluno = this.findByNome(nome)[0];
+        return aluno.notaFinal;
+    }
 }
 
 module.exports = { AlunoService: AlunoService };
