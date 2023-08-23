@@ -11,11 +11,24 @@ class AlunoService {
         return this.repository.create(aluno);
     }
 
-    // removeAlunoByNome(nome){
-    //     const aluno = this.repository.findByNome(nome);
-    //     if (!aluno)
-    //         throw new Error("Aluno não encontrado!");
-    // }
+    findByNome(nome){
+        const aluno = this.repository.findByNome(nome);
+        if (!aluno)
+            throw new Error("Aluno não encontrado!");
+
+        return aluno;
+    }
+
+    removeByNome(nome){
+        const aluno = this.findByNome(nome)[0];
+        try {
+            this.repository.delete(aluno.id);
+            return true;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
 }
 
 module.exports = { AlunoService: AlunoService };
